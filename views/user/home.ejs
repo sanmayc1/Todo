@@ -1,0 +1,151 @@
+<%- include('./layout/header.ejs') %>
+
+    <!-- nav section -->
+
+    <nav class="bg-white shadow-md">
+        <div class="max-w-full  ">
+            <div class="flex h-16 justify-between mx-8">
+
+                <div class="flex">
+
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-2xl font-bold text-indigo-600">TaskManager</h1>
+                    </div>
+
+                </div>
+
+                <div class="flex">
+
+                    <div class="flex">
+
+                        <div class="flex items-center mr-5 ">
+                            <h1 class="text-md font-small text-black ">
+                                <%= name %>
+                            </h1>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center justify-end">
+
+                        <a href="/logout" class="bg-red-800 text-white text-sm px-4 py-2 rounded-md hover:bg-red-700">
+                            Logout
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!--  -->
+
+    <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Todo List</h1>
+
+            <div class="flex mb-4">
+
+                <form action="/addTask" method="post" class="w-full ">
+
+                    <input type="text" name="task" placeholder="Add a new task"
+                        class="flex-grow p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-3/4">
+
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300">
+                        Add
+                    </button>
+
+                </form>
+
+            </div>
+
+            <ul id="todoList" class="space-y-2">
+
+                <% if (typeof tasks !=="undefined" ) { %>
+
+                    <% tasks.forEach(task=> { %>
+                        <!-- Not completed task -->
+                        <% if (!task.complete) { %>
+
+                            <li class="flex items-center justify-between bg-gray-50 p-3 rounded-md">
+                                <span>
+                                    <%= task.tittle %>
+                                </span>
+                                <div>
+
+                                    <a class="text-green-500 mr-2 hover:text-green-600" href="/taskComplete/<%= task.id %>">✓</a>
+                                    <a class="text-red-500 hover:text-red-600" href="/deleteTask/<%= task._id %>">✗</a>
+
+                                </div>
+                            </li>
+
+                            <% } %>
+                                <!-- Completed task -->
+                                <% if (task.complete) { %>
+
+                                    <li
+                                        class="flex items-center justify-between bg-green-50 p-3 rounded-md text-gray-600">
+                                        <span class="line-through text-md">
+                                            <%= task.tittle %>
+                                        </span>
+                                        <div>
+
+
+                                            <a class="text-red-500 hover:text-red-600"
+                                                href="/deleteTask/<%= task._id %>">✗</a>
+
+                                        </div>
+                                    </li>
+
+                                    <% } %>
+
+
+
+
+                                        <% }) %>
+
+                                            <% } %>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <% if (typeof msg !=="undefined" ) { %>
+
+        <script>
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "center",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "",
+                title: "Blank task Can't add"
+            }).then(() => {
+                window.location.href = "/home"
+            });
+
+
+        </script>
+
+        <% } %>
+
+
+ <%- include('./layout/footer.ejs') %>

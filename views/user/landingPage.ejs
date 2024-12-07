@@ -1,0 +1,95 @@
+<%- include('./layout/header.ejs') %>
+
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-2xl font-bold text-indigo-600">TaskManager</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="/login" class="text-gray-700 hover:text-indigo-600">Login</a>
+                <a href="/signup" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+ <div class="bg-gradient-to-r from-white via-sky-200 to-indigo-100">
+
+ <!-- Hero Section -->
+ <header class="bg-gradient-to-r from-white via-sky-200 to-indigo-100 py-36 pl-24 ">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center ">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+            <h2 class="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+                Organize Your Life, One Task at a Time
+            </h2>
+            <p class="mt-3 text-xl text-gray-500 mb-6">
+                TaskManager helps you stay productive, focused, and in control of your daily tasks with ease and simplicity.
+            </p>
+            <div class="flex space-x-4">
+                <a href="/signup" class="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 text-lg">
+                    Get Started
+                </a>
+                <a href="#features" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md hover:bg-gray-300 text-lg">
+                    Learn More
+                </a>
+            </div>
+        </div>
+       
+    </div>
+</header>
+
+<!-- Features Section -->
+<section id="features" class="py-16 bg-gradient-to-r from-white via-sky-200 to-indigo-100 mt-10 pb-64 ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-900">
+                Powerful Features to Boost Your Productivity
+            </h3>
+            <p class="mt-4 text-xl text-gray-500">
+                Designed to make task management effortless and enjoyable
+            </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <i class="fas fa-list-check text-5xl text-indigo-600 mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Easy Task Creation</h4>
+                <p class="text-gray-500">
+                    Create and organize tasks with just a few clicks. Intuitive interface makes tracking your to-dos a breeze.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <i class="fas fa-calendar-check text-5xl text-indigo-600 mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Easy Task delete</h4>
+                <p class="text-gray-500">
+                    Easily delete tasks when completed or no longer needed. Keep your schedule clutter-free and focus on what matters.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <i class="fas fa-sync text-5xl text-indigo-600 mb-4"></i>
+                <h4 class="text-xl font-semibold mb-2">Free Version</h4>
+                <p class="text-gray-500">
+                    Enjoy seamless task management absolutely free, with no hidden costs
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ </div>
+
+<!-- Footer -->
+
+<footer class="bg-gray-800 text-white ">
+    <div class="text-center text-gray-400 py-6 ">
+        © 2024 TaskManager. All rights reserved.
+    </div>
+</footer>
+
+<%- include('./layout/footer.ejs') %>

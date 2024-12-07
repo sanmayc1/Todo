@@ -1,0 +1,102 @@
+<%- include('./layout/header.ejs') %>
+
+
+<nav class="bg-white shadow-md z-10 fixed w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/"><h1 class="text-2xl font-bold text-indigo-600">TaskManager</h1></a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</nav>
+
+
+<div class="absolute inset-0 flex items-center justify-center p-4 bg-gradient-to-r from-white via-sky-200 to-indigo-100">
+    <div class="w-full max-w-md">
+        <div class="bg-white shadow-md rounded-lg px-10 pt-6 pb-8 mx-10">
+            <h2 class="text-center text-3xl font-bold text-gray-900 mb-10 mt-5 pb-5">
+                Login 
+            </h2>
+            
+            <form class="space-y-6" action="/login" method="post" >
+
+                <div>
+                
+                    <input 
+
+                        name="email"
+                        type="text" 
+                        class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Email address"
+                        value= "<%= data.email %>"
+                    >
+                    <% if (typeof error !== "undefined") { %>
+
+                        <p class="text-red-400 text-xs ps-2 pt-1">
+                            <%= error %>
+                        </p>
+                     
+                    <% } %>
+                </div>
+                
+                <div>
+                    <input 
+
+                        name="password"
+                        type="password"                     
+                        class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Password"
+                        value="<%= data.password %>"
+                    >
+                    <% if (typeof error2 !== "undefined") { %>
+
+                        <p class="text-red-400 text-xs ps-2 pt-1">
+                            <%= error2 %>
+                        </p>
+                     
+                    <% } %>
+                </div>
+                
+                
+                <div>
+                    <button 
+                        type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Login
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">
+                            Or
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+                    
+                    <a 
+                        href="/signup"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Sign up
+                    </a>
+    
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include('./layout/footer.ejs') %>

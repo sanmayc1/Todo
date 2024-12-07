@@ -1,0 +1,168 @@
+<%- include('./layout/header.ejs') %>
+
+    <nav class="bg-white shadow-md z-10 fixed w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/"><h1 class="text-2xl font-bold text-indigo-600">TaskManager</h1></a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+
+                    <a href="/login" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div
+        class="absolute inset-0 flex items-center justify-center p-4 bg-gradient-to-r from-white via-sky-200 to-indigo-100">
+        <div class="w-full max-w-md">
+            <div class="bg-white shadow-2xl rounded-lg px-10 pt-6 pb-8 mx-10">
+                <h2 class="text-center text-3xl font-bold text-gray-900 mb-6 pt-7 pb-5">
+                    SignUp
+                </h2>
+
+                <form class="space-y-6" action="/signup" method="post">
+                    <div>
+                        
+                        <input name="name" type="text"
+                            class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Name" 
+                            value="<%= data.name%>">
+                        <% if (typeof error !=="undefined" ) { %>
+
+                            <% error.forEach(err=> { %>
+
+                                <% if (err.path==="name" ) { %>
+                                    <p class="text-red-400 text-xs ps-2 pt-1">
+                                        <%= err.msg %>
+                                    </p>
+                                    <% } %>
+
+                                        <% }) %>
+
+                                            <% } %>
+
+                    </div>
+
+                    <div>
+                        
+                        <input name="email" type="text"
+                            class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Email address" 
+                            value="<%= data.email%>">
+                        <% if (typeof error !=="undefined" ) { %>
+
+                            <% error.forEach(err=> { %>
+
+                                <% if (err.path==="email" ) { %>
+                                    <p class="text-red-400 text-xs ps-2 pt-1">
+                                        <%= err.msg %>
+                                    </p>
+                                    <% } %>
+
+                                        <% }) %>
+
+                                            <% } %>
+
+                    </div>
+
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input name="password" type="password"
+                            class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Password" 
+                            value="<%= data.password%>">
+                        <% if (typeof error !=="undefined" ) { %>
+
+                            <% error.forEach(err=> { %>
+
+                                <% if (err.path==="password" ) { %>
+                                    <p class="text-red-400 text-xs ps-2 pt-1">
+                                        <%= err.msg %>
+                                    </p>
+                                    <% } %>
+
+                                        <% }) %>
+
+                                            <% } %>
+                    </div>
+
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input name="confirmPassword" type="password"
+                            class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            placeholder="Confirm Password"
+                            value="<%= data.confirmPassword %>">
+                        <% if (typeof error !=="undefined" ) { %>
+
+                            <% error.forEach(err=> { %>
+
+                                <% if (err.path==="confirmPassword" ) { %>
+                                    <p class="text-red-400 text-xs ps-2 pt-1">
+                                        <%= err.msg %>
+                                    </p>
+                                    <% } %>
+
+                                        <% }) %>
+
+                                            <% } %>
+                    </div>
+
+                    <div class="py-6">
+                        <button type="submit"
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Sign Up
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <% if (typeof success !=="undefined" ) { %>
+
+        <script>
+            Swal.fire({
+                title: "Registration Successful",
+                icon: "success"
+            }).then(() => {
+                window.location.href = "/login"
+            })
+        </script>
+
+
+        <% } %>
+
+        <% if (typeof exist !=="undefined" ) { %>
+
+            <script>
+                Swal.fire({
+                    title: "Email already registered. Please log in." ,
+                    icon: "info"
+                }).then(() => {
+                window.location.href = "/login"
+            })
+            </script>
+    
+    
+            <% } %>
+
+            <% if (typeof err !=="undefined" ) { %>
+
+                <script>
+                    Swal.fire({
+                        title: "Somthing went wrong",
+                        icon: "error"
+                    })
+                </script>
+        
+        
+                <% } %>
+
+<%- include('./layout/footer.ejs') %>
