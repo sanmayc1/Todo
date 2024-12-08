@@ -17,7 +17,7 @@ A simple, user-friendly To-Do application that allows users to manage their dail
 1. Clone the repository:
    ```bash
    git clone https://github.com/sanmayc1/Todo.git
-   cd todo-app
+   cd Todo
    ```
 
 2. Install dependencies:
